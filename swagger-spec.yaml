@@ -1,0 +1,696 @@
+openapi: 3.0.0
+paths:
+  /:
+    get:
+      operationId: AppController_getIndex
+      parameters: []
+      responses:
+        "200":
+          description: ""
+  /photos:
+    get:
+      operationId: AppController_getProfile
+      parameters: []
+      responses:
+        "200":
+          description: ""
+  /map:
+    get:
+      operationId: AppController_getMap
+      parameters: []
+      responses:
+        "200":
+          description: ""
+  /weather:
+    get:
+      operationId: AppController_getWeather
+      parameters: []
+      responses:
+        "200":
+          description: ""
+  /planer:
+    get:
+      operationId: AppController_getPlaner
+      parameters: []
+      responses:
+        "200":
+          description: ""
+  /shop:
+    get:
+      operationId: AppController_getShop
+      parameters:
+        - name: page
+          required: true
+          in: query
+          schema:
+            type: number
+        - name: limit
+          required: true
+          in: query
+          schema:
+            type: number
+      responses:
+        "200":
+          description: ""
+  /profileuser:
+    get:
+      operationId: AppController_getProfileuser
+      parameters: []
+      responses:
+        "200":
+          description: ""
+  /cart:
+    get:
+      operationId: AppController_getCart
+      parameters: []
+      responses:
+        "200":
+          description: ""
+  /login:
+    get:
+      operationId: AppController_getLogin
+      parameters: []
+      responses:
+        "200":
+          description: ""
+  /register:
+    get:
+      operationId: AppController_getReg
+      parameters: []
+      responses:
+        "200":
+          description: ""
+  /photo/create:
+    post:
+      operationId: CommentController_create
+      summary: Create a new comment
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateCommentBody"
+      responses:
+        "201":
+          description: Comment successfully created.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateCommentBody"
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      tags: &a1
+        - comments
+      security: &a2
+        - bearer: []
+  /photo:
+    get:
+      operationId: CommentController_findAll
+      summary: Get all comments
+      parameters: []
+      responses:
+        "200":
+          description: Comments found.
+        "404":
+          description: No comments found.
+      tags: *a1
+      security: *a2
+  /photo/{id}:
+    get:
+      operationId: CommentController_getComment
+      summary: Get a comment by id
+      parameters:
+        - name: id
+          required: true
+          in: path
+          description: The id of the comment
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Comment found.
+        "404":
+          description: Comment not found.
+      tags: *a1
+      security: *a2
+    delete:
+      operationId: CommentController_deleteComment
+      summary: Delete a comment
+      parameters:
+        - name: id
+          required: true
+          in: path
+          description: The id of the comment to delete
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Comment deleted.
+        "404":
+          description: Comment not found.
+      tags: *a1
+      security: *a2
+    put:
+      operationId: CommentController_updateComment
+      summary: Update a comment by id
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateCommentBody"
+      responses:
+        "200":
+          description: Comment successfully updated.
+        "400":
+          description: Bad Request
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+      tags: *a1
+      security: *a2
+  /users:
+    post:
+      operationId: UserController_create
+      summary: Create a new user
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateUserDto"
+      responses:
+        "201":
+          description: User successfully created.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateUserDto"
+        "400":
+          description: Bad Request
+      tags: &a3
+        - users
+      security: &a4
+        - bearer: []
+    get:
+      operationId: UserController_findAll
+      summary: Get all users
+      parameters: []
+      responses:
+        "200":
+          description: Users found.
+      tags: *a3
+      security: *a4
+  /users/{id}:
+    get:
+      operationId: UserController_findOne
+      summary: Get a user by id
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      responses:
+        "200":
+          description: User found.
+        "404":
+          description: User not found.
+      tags: *a3
+      security: *a4
+    put:
+      operationId: UserController_update
+      summary: Update a user by id
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateUserDto"
+      responses:
+        "200":
+          description: User successfully updated.
+        "404":
+          description: User not found.
+      tags: *a3
+      security: *a4
+    delete:
+      operationId: UserController_deleteUser
+      summary: Delete a user
+      parameters:
+        - name: id
+          required: true
+          in: path
+          description: The id of the user to delete
+          schema:
+            type: number
+      responses:
+        "200":
+          description: User deleted.
+        "404":
+          description: User not found.
+      tags: *a3
+      security: *a4
+  /products:
+    post:
+      operationId: ProductController_create
+      summary: Create a new product
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateProductBody"
+      responses:
+        "201":
+          description: The product has been successfully created.
+        "403":
+          description: Forbidden.
+      tags: &a5
+        - products
+      security: &a6
+        - bearer: []
+    get:
+      operationId: ProductController_getAll
+      summary: Get all products with pagination
+      parameters:
+        - name: page
+          required: false
+          in: query
+          description: Page number for pagination
+          schema:
+            type: number
+        - name: limit
+          required: false
+          in: query
+          description: Number of items per page for pagination
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Return all products.
+      tags: *a5
+      security: *a6
+  /products/{id}:
+    get:
+      operationId: ProductController_getOne
+      summary: Get a single product by ID
+      parameters:
+        - name: id
+          required: true
+          in: path
+          description: Product ID
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Return a single product.
+        "404":
+          description: Product not found.
+      tags: *a5
+      security: *a6
+    put:
+      operationId: ProductController_update
+      summary: Update product by ID
+      parameters:
+        - name: id
+          required: true
+          in: path
+          description: Product ID
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateProductBody"
+      responses:
+        "200":
+          description: The product has been successfully updated.
+        "403":
+          description: Forbidden.
+        "404":
+          description: Product not found.
+      tags: *a5
+      security: *a6
+    delete:
+      operationId: ProductController_delete
+      summary: Delete product by ID
+      parameters:
+        - name: id
+          required: true
+          in: path
+          description: Product ID
+          schema:
+            type: number
+      responses:
+        "200":
+          description: The product has been successfully deleted.
+        "403":
+          description: Forbidden.
+        "404":
+          description: Product not found.
+      tags: *a5
+      security: *a6
+  /attraction/creat:
+    post:
+      operationId: AttractionController_create
+      summary: Create a new attraction
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateAttractionBody"
+      responses:
+        "201":
+          description: Attraction successfully created.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateAttractionBody"
+        "400":
+          description: Bad Request
+      tags: &a7
+        - attractions
+  /attraction:
+    get:
+      operationId: AttractionController_findAll
+      summary: Get all attractions
+      parameters: []
+      responses:
+        "200":
+          description: Attractions found.
+        "404":
+          description: No attractions found.
+      tags: *a7
+  /attraction/{id}:
+    get:
+      operationId: AttractionController_getAttraction
+      summary: Get an attraction by id
+      parameters:
+        - name: id
+          required: true
+          in: path
+          description: The id of the attraction
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Attraction found.
+        "404":
+          description: Attraction not found.
+      tags: *a7
+    delete:
+      operationId: AttractionController_deleteAttraction
+      summary: Delete an attraction
+      parameters:
+        - name: id
+          required: true
+          in: path
+          description: The id of the attraction to delete
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Attraction deleted.
+        "404":
+          description: Attraction not found.
+      tags: *a7
+    put:
+      operationId: AttractionController_updateAttraction
+      summary: Update an attraction by id
+      parameters:
+        - name: id
+          required: true
+          in: path
+          schema:
+            type: number
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateAttractionBody"
+      responses:
+        "200":
+          description: Attraction successfully updated.
+        "400":
+          description: Bad Request
+      tags: *a7
+  /cart/add:
+    post:
+      operationId: CartController_addToCart
+      summary: Add product to cart
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreatCartBody"
+      responses:
+        "201":
+          description: Product successfully added to cart.
+        "400":
+          description: Bad Request
+      tags: &a8
+        - cart
+      security: &a9
+        - bearer: []
+  /cart/{userId}:
+    get:
+      operationId: CartController_getCart
+      summary: Get cart by user ID
+      parameters:
+        - name: userId
+          required: true
+          in: path
+          description: User ID
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Cart found.
+        "404":
+          description: Cart not found.
+      tags: *a8
+      security: *a9
+  /cart/by-id/{cartId}:
+    get:
+      operationId: CartController_getCartById
+      summary: Get cart by cart ID
+      parameters:
+        - name: cartId
+          required: true
+          in: path
+          description: Cart ID
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Cart found.
+        "404":
+          description: Cart not found.
+      tags: *a8
+      security: *a9
+  /cart/item/{cartItemId}:
+    put:
+      operationId: CartController_updateCartItem
+      summary: Update cart item quantity
+      parameters:
+        - name: cartItemId
+          required: true
+          in: path
+          description: Cart Item ID
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Quantity updated.
+        "404":
+          description: Cart item not found.
+      tags: *a8
+      security: *a9
+    delete:
+      operationId: CartController_removeCartItem
+      summary: Remove item from cart
+      parameters:
+        - name: cartItemId
+          required: true
+          in: path
+          description: Cart Item ID
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Item removed.
+        "404":
+          description: Item not found.
+      tags: *a8
+      security: *a9
+info:
+  title: Salekhard
+  description: Welcome to Salekhard
+  version: "1.0"
+  contact: {}
+tags: []
+servers: []
+components:
+  securitySchemes:
+    basic:
+      type: http
+      scheme: basic
+  schemas:
+    CreateCommentBody:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Sergey
+          description: The name of the commenter
+        email:
+          type: string
+          example: sergey@example.com
+          description: The email address of the commenter
+        content:
+          type: string
+          example: Great attraction!
+          description: The content of the comment
+      required:
+        - name
+        - email
+        - content
+    CreateUserDto:
+      type: object
+      properties:
+        firstName:
+          type: string
+          example: Sergey
+          description: The first name of the user
+        lastName:
+          type: string
+          example: Nilogov
+          description: The last name of the user
+        patronymic:
+          type: string
+          example: Aleksandrovich
+          description: The patronymic name of the user (optional)
+        gender:
+          type: string
+          example: male
+          description: The gender of the user
+        phone:
+          type: string
+          example: "+79220763378"
+          description: The phone number of the user
+        email:
+          type: string
+          example: sergey@example.com
+          description: The email address of the user
+        password:
+          type: string
+          example: Password123
+          description: The password of the user
+      required:
+        - firstName
+        - lastName
+        - patronymic
+        - gender
+        - phone
+        - email
+        - password
+    CreateProductBody:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Awesome Product
+          description: The name of the product
+        description:
+          type: string
+          example: Detailed description of the product.
+          description: The description of the product
+        price:
+          type: number
+          example: 299
+          description: The price of the product
+        image:
+          type: string
+          example: /images/product.jpg
+          description: The image path of the product
+      required:
+        - name
+        - description
+        - price
+        - image
+    CreateAttractionBody:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Name of the Attraction
+          description: The name of the attraction
+        location:
+          type: string
+          example: Location of the Attraction
+          description: The location of the attraction
+        foundationYear:
+          type: number
+          example: 1990
+          description: The year the attraction was founded
+        description:
+          type: string
+          example: Description of the Attraction
+          description: The description of the attraction
+        image:
+          type: string
+          example: /images/attraction.jpg
+          description: The image path of the attraction
+      required:
+        - name
+        - location
+        - foundationYear
+        - description
+        - image
+    CreatCartBody:
+      type: object
+      properties:
+        userId:
+          type: number
+          example: 1
+          description: The ID of the user
+        productId:
+          type: number
+          example: 1
+          description: The ID of the product to add to the cart
+        quantity:
+          type: number
+          example: 2
+          description: Quantity of the product
+      required:
+        - userId
+        - productId
+        - quantity

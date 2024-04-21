@@ -1,0 +1,19 @@
+{
+  // Используйте версию IntelliSense, чтобы узнать о возможных атрибутах.
+  // Наведите указатель мыши, чтобы просмотреть описания существующих атрибутов.
+  // Для дополнительной информации посетите: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Запуск на своем хосте",
+      "skipFiles": ["<node_internals>/**"], // ! - "program": "${workspaceFolder}/src/main.ts",
+      "runtimeExecutable": "npm", // *  Это говорит VS Code запустить npm run start как часть процесса отладки, а не как отдельную предварительную задачу
+      "runtimeArgs": ["run", "start"], // ! - "preLaunchTask": "npm: start",
+      "env": {
+        "PORT": "22822"
+      }
+    }
+  ]
+}

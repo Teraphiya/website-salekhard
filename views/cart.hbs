@@ -1,0 +1,22 @@
+<html>
+<head>
+    {{> script-style}}
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="js/cartweb.js"></script>
+</head>
+
+<body>
+    {{> header}}
+    <main>
+        <div id="totalPrice" class="total-price"></div>
+        <div class="products-grid"></div>
+    </main>
+    {{> time }}
+    {{> footer }}
+</body>
+
+</html>

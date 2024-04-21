@@ -1,0 +1,93 @@
+<head>
+    {{> script-style}}
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/script.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        /* Swiper */
+        .swiper {
+            width: 100%;
+            padding-top: 1px;
+            padding-bottom: 1px;
+        }
+
+        .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            width: 300px;
+            height: 200px;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    {{> header}}
+    <main>
+        <div id="weather-container">
+            <p id="weather"></p>
+        </div>
+        <!-- Swiper -->
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"> <img src="images/swiper1.PNG" /> </div>
+                <div class="swiper-slide"> <img src="images/swiper5.PNG" /> </div>
+                <div class="swiper-slide"> <img src="images/swiper7.PNG" /> </div>
+                <div class="swiper-slide"> <img src="images/swiper6.PNG" /> </div>
+                <div class="swiper-slide"> <img src="images/swiper2.PNG" /> </div>
+                <div class="swiper-slide"> <img src="images/swiper3.PNG" /> </div>
+                <div class="swiper-slide"> <img src="images/swiper4.PNG" /> </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </main>
+    <script>
+        var apiKey = 'd72cf5f8c6d8b0009c7bfea968287e95';
+        var city = 'Salekhard';
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`).then(response => response.json()).then(data => {
+            var temperature = data.main.temp;
+            var description = data.weather[0].description;
+            document.getElementById('weather').innerHTML = `Текущая температура в Салехарде: <span class="temp">${temperature}°C</span>.`;
+        }).catch(error => {
+            console.error('Ошибка при получении данных о погоде:', error);
+            document.getElementById('weather').innerHTML = "Ошибка при получении данных о погоде.";
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Swiper -->
+    <script>
+        let swiper = new Swiper(".mySwiper", {
+            effect: "coverflow", // Тут выбор эффекта, их много, выбрал - "coverflow"
+            grabCursor: true, // Для того, чтобы можно было эффектно) схватить изображение.
+            centeredSlides: true, // В центр, ту фотку на которой нахожусь
+            slidesPerView: "auto", // Автоматическое количество слайдов
+            coverflowEffect: {
+                rotate: 50, // Угол поворота
+                stretch: 0, // Растяжение между слайдами
+                depth: 100, // Глубина 3D
+                modifier: 1, // Множитель
+                slideShadows: false, // Тени слайдов
+            }
+            , pagination: {
+                el: ".swiper-pagination", // Элемент для пагинации - структурирую путем разделения
+            }
+        , });
+    </script>
+    <div class="spacer"></div>
+    {{> time }}
+    {{> footer }}
+    <button id="back-to-top" title="Вернуться наверх">&#9757;</button>
+</body>
+
+</html>

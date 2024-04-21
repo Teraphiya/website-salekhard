@@ -1,0 +1,48 @@
+<head>
+    {{> script-style}}
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="js/shopweb.js"></script>
+</head>
+
+
+<body>
+    {{> header}}
+    <main class="products-grid">
+        {{#each products}}
+        <div class="product">
+            <div class="product-image">
+                <img src="{{this.image}}" alt="{{this.name}}">
+            </div>
+            <div class="product-info">
+                <h3>{{this.name}}</h3>
+                <p>{{this.description}}</p>
+                <p>Цена: {{this.price}} руб.</p>
+                <button class="add-to-cart" data-id="{{this.id}}">В корзину</button>
+            </div>
+        </div>
+        {{/each}}
+    </main>
+
+    <div class="pagination">
+    {{#if hasPrevPage}}
+        <a href="/shop?page={{decrement page}}&limit=9">Предыдущая</a>
+    {{/if}}
+        
+    {{#each pages from=1 to=totalPages}}
+        <a href="/shop?page={{this}}&limit=9">{{this}}</a>
+    {{/each}}
+        
+    {{#if hasNextPage}}
+        <a href="/shop?page={{increment page}}&limit=9">Следующая</a>
+    {{/if}}
+    </div>
+
+    {{> time }}
+    {{> footer }}
+    <button id="back-to-top" title="Вернуться наверх">&#9757;</button>
+</body>
+</html>

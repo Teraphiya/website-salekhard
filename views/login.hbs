@@ -1,0 +1,36 @@
+<head>
+    {{> script-style}}
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/logins.js"></script>
+</head>
+
+<body>
+    {{>header}}
+    <main style="margin-bottom: 151px;">
+        <h2>Вход</h2>
+        
+        <form id="login" class="login">
+            <p>
+                <label for='email'>Email:</label>
+                <input type='email' id='email' name='email' required />
+            </p>
+            <p>
+                <label for='password'>Пароль:</label>
+                <input type='password' id='password' name='password' required />
+            </p>
+            <p  class="centered-content">
+                <button type='submit'>Войти</button>
+            </p>
+        </form>
+        <span class="for-message">
+            <div class="centered-content">
+                У вас еще нет аккаунта? 
+                <a href="register" class="for-color">Зарегистрироваться</a>
+            </div>
+        </span>
+    </main>
+    {{> time }}
+    {{> footer }}
+</body>
+
+</html>

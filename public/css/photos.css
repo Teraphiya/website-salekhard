@@ -1,0 +1,455 @@
+h1 {
+  text-transform: uppercase;
+  /* Заглавные буквы */
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-size: 1rem;
+    line-height: 1.5;
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    color: #343434;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0;  
+}
+
+header {
+  background-color: #282828;
+  color: #fff;
+  padding: 1px 0;
+  /* Для внутренних отступов, сверху\снизу-слева\справа */
+  text-align: center;
+  position: sticky;
+  /* Для закрепа при скроллинге */
+  top: 0;
+  /* Расположение наверху */
+  z-index: 1000;
+  /* Слой */
+  border-radius: 15px;
+  /* Для округления краев */
+  margin: 20px;
+  /* Для отступов от краев */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+  /* Для тени - гор\верт\размытие\цвет\прозрачность*/
+  transform-origin: center center;
+  transition: transform 0.2s;
+  /* Для плавности */
+}
+
+header h1 {
+  font-size: 2.1rem;
+}
+
+
+nav ul {
+  list-style-type: none;
+  /* Удаляю маркеры */
+  padding-top: 1px;
+  /* Отступ сверху для ul */
+}
+
+nav ul li {
+  display: inline;
+  /* Делаю в ряд */
+  margin-right: 20px;
+  /* Между эл */
+}
+
+nav ul li a {
+  text-decoration: none;
+  /* Убираю подчеркивания */
+  color: #fff;
+  transition: color 0.3s;
+  /* Плавное изменение цвета */
+}
+
+nav ul li a:hover {
+    color: #f4f4f4;
+    background-color: #666;
+    padding: 5px 10px;
+    border-radius: 7px;
+    font-size: 1rem;
+}
+
+nav ul li a.active {
+    font-weight: bold;
+    background-color: #A9A9A9;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+p,
+ul,
+blockquote,
+pre,
+code {
+  margin-bottom: 20px;
+}
+
+
+main {
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 1650px;
+  margin: 1px auto;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+  text-align: center;
+  padding: 3px 0;
+  background-color: #282828;
+  color: #fff;
+  position: relative;
+}
+
+footer p {
+  margin: 10px 0;
+}
+
+/* ВСЕ стили для моей галереи */
+
+.photo-gallery {
+    display: flex;
+    /* В ряд */
+    flex-wrap: wrap;
+    /* На новую строку когда не влезают */
+    justify-content: center;
+    /* Гор */
+    gap: 20px;
+    /* Между */
+    padding: 20px;
+    /* Внутренние */
+}
+
+.photo-container {
+    width: 300px;
+    /* Фиксирую */
+    height: 200px;
+    overflow: hidden;
+    /* Скрытие части изображения, если оно выходит за границы контейнера */
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    /* Плавное изменение при трансформации (масштабирование) */
+}
+
+.photo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.3s ease, transform 0.3s ease;
+    filter: brightness(0.8); /* Яркость */
+}
+
+/* НА */
+.photo-container:hover {
+    transform: scale(1.05);
+    /* Увл сам конт*/
+}
+
+/* В */
+.photo-container:hover img {
+    filter: brightness(1);
+    transform: scale(1.1);
+}
+
+.modal {
+    display: none;
+    /* Изначально скрытое модальное окно */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 1000;
+    /* Выше остал элем*/
+    overflow: auto;
+    /* ?Прокрутка */
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 80%;
+    max-height: 80%;
+}
+
+/* Кнопка */
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    /* Курсор */
+}
+
+/* При нав и фок*/
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    /* Убираю подчеркивание ссылки */
+    cursor: pointer;
+    /* Курсор */
+}
+
+
+
+#caption {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.8rem;
+    user-select: none;
+    cursor: pointer;
+}
+
+.next {
+    right: 0;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+.comments-section {
+    max-width: 800px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+.comments-display {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 10px;
+}
+
+
+/* Стили для формы комментариев */
+
+#newCommentForm {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 15px;
+}
+
+#newCommentForm input,
+#newCommentForm textarea {
+    /* Форма для нескольких сразу строк */
+    margin-bottom: 10px;
+    padding: 8px;
+}
+
+#newCommentForm button {
+    padding: 10px;
+    background-color: #008000;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#newCommentForm button:hover {
+    background-color: #004524;
+}
+
+
+
+
+/* Кнопка "Редактировать" */
+.edit-comment {
+    background-color: #FFCA86; /* Оранжевый цвет */
+    color: #fff; /* Белый текст */
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-comment:hover {
+    background-color: #d60;
+}
+
+/* Кнопка "Редактировать" при нажатии */
+.edit-comment:active {
+    background-color: #d60; /* Более темный оранжевый при нажатии */
+}
+
+/* Кнопка "Сохранить" */
+.save-edit-comment {
+    background-color: #008000; /* Зеленый цвет */
+    color: #fff; /* Белый текст */
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none; /* Изначально скрыта */
+}
+
+.save-edit-comment:hover {
+    background-color: red;
+}
+
+
+/* Показать кнопку "Сохранить", когда нажата кнопка "Редактировать" */
+.comment-edit-form:not([style*="display: none"]) .save-edit-comment {
+    display: inline-block;
+}
+
+
+
+.comment-edit-form input,
+.comment-edit-form textarea {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.comment-edit-form input:focus,
+.comment-edit-form textarea:focus {
+    border-color: #007bff;
+}
+
+
+
+
+/* Поля ввода в форме редактирования */
+.comment-edit-form input,
+.comment-edit-form textarea {
+    /* ... (существующие стили) */
+    transition: all 0.3s ease-in-out; /* Добавить переход */
+}
+
+/* Скрыть поля ввода изначально */
+.comment-edit-form input,
+.comment-edit-form textarea {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+/* Показать поля ввода, когда форма редактирования видна */
+.comment-edit-form:not([style*="display: none"]) input,
+.comment-edit-form:not([style*="display: none"]) textarea {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+
+
+
+.preloader {
+    display: none;
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #343434;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+@media (max-width: 900px) {
+  footer {
+    display: none;
+  }
+}
+
+@media (max-width: 2048px) {
+  body {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 1920px) {
+  body {
+    font-size: 1.125rem;
+  }
+}
+
+@media (max-width: 1366px) {
+  body {
+    font-size: 0.9375rem;
+  }
+}
+
+#back-to-top {
+  display: none;
+  /* По умолчанию скрываю кнопку */
+  position: fixed;
+  bottom: 10px;
+  /* Снизу */
+  right: 10px;
+  /* Справа */
+  background-color: #696969;
+  border: none;
+  /* - рамка */
+  cursor: pointer;
+  /* Курсор в виде руки при наведении */
+  border-radius: 100%;
+  /* Делаею кнопку круглой */
+  padding: 10px 15px;
+  /* Отступы внутри кнопки */
+  font-size: 1.25rem;
+  /* Размер смайла */
+  transition: background-color 0.3s;
+  /* Плавное изменение цвета фона */
+}
+
+#back-to-top:hover {
+  background-color: #555;
+  /* Цвет фона кнопки при наведении */
+}
+
+.for-newcolor {
+    padding: 5px;
+    color: black;
+    background-color: white;
+    border-radius: 10px;
+}

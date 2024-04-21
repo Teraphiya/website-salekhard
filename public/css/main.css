@@ -1,0 +1,685 @@
+h1 {
+  text-transform: uppercase;
+  /* Заглавные буквы */
+}
+
+html {
+  font-size: 16px;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #343434;
+  font-size: 1rem;
+  line-height: 1.5;
+  /* Это я сделал для добавления фона, который статичен при скроллинге */
+  /* background-image: url("images/1web.png"); */
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  margin: 0;
+}
+
+header {
+  background-color: #282828;
+  color: #fff;
+  padding: 1px 0;
+  /* Для внутренних отступов, сверху\снизу-слева\справа */
+  text-align: center;
+  position: sticky;
+  /* Для закрепа при скроллинге */
+  top: 0;
+  /* Расположение наверху */
+  z-index: 1000;
+  /* Слой */
+  border-radius: 15px;
+  /* Для округления краев */
+  margin: 20px;
+  /* Для отступов от краев */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+  /* Для тени - гор\верт\размытие\цвет\прозрачность*/
+  transform-origin: center center;
+  transition: transform 0.2s;
+  /* Для плавности */
+}
+
+header h1 {
+  font-size: 2.1rem;
+}
+
+nav ul {
+  list-style-type: none;
+  /* Удаляю маркеры */
+  padding-top: 1px;
+  /* Отступ сверху для ul */
+}
+
+nav ul li {
+  display: inline;
+  /* Делаю в ряд */
+  margin-right: 20px;
+  /* Между эл */
+}
+
+nav ul li a {
+  text-decoration: none;
+  /* Убираю подчеркивания */
+  color: #fff;
+  transition: color 0.3s;
+  /* Плавное изменение цвета */
+}
+
+nav ul li a:hover {
+  color: #f4f4f4;
+  background-color: #666;
+  padding: 5px 10px;
+  border-radius: 7px;
+  font-size: 1rem;
+}
+
+main {
+  padding: 20px;
+  max-width: 800px;
+  margin: 40px auto;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2,
+h3,
+h4 {
+  margin-bottom: 20px;
+  /* Снизу для заголовка */
+  padding-bottom: 10px;
+  /* Снизу для элементов */
+  border-bottom: 1px solid #eaeaea;
+  /* Разделитель */
+}
+
+h2 {
+  text-align: center;
+}
+
+p,
+ul,
+blockquote,
+pre,
+code {
+  margin-bottom: 20px;
+}
+
+pre {
+  background-color: #eaeaea;
+  padding: 19px;
+  border-radius: 20px;
+}
+
+code {
+  display: block;
+  background-color: #eaeaea;
+  padding: 10px;
+  border-radius: 5px;
+  font-family: "Courier New", monospace;
+}
+
+footer {
+  text-align: center;
+  padding: 3px 0;
+  background-color: #282828;
+  color: #fff;
+  position: relative;
+}
+
+footer p {
+  margin: 10px 0;
+}
+
+/* Стили для выделенных тегов */
+
+strong,
+b {
+  font-weight: bold;
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+#featured-image {
+  display: block;
+  /* Как блочный эл*/
+  max-width: 50%;
+  margin: 20px auto;
+  /* Это добавит отступы сверху и снизу и выровняет изображение по центру */
+  border-radius: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Медиазапросы тут: */
+
+@media (max-width: 900px) {
+  footer {
+    display: none;
+  }
+}
+
+@media (max-width: 2048px) {
+  body {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 1920px) {
+  body {
+    font-size: 1.125rem;
+  }
+}
+
+@media (max-width: 1366px) {
+  body {
+    font-size: 0.9375rem;
+  }
+}
+
+
+/* Таблица с населением */
+
+
+.table {
+  display: grid;
+  overflow: auto;
+  grid-template-columns: 1fr;
+}
+
+.table-cols-3 .table_row {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.table .table_body, .table .table_head {
+  display: grid;
+}
+
+.table_row {
+  display: grid;
+  color: black;
+}
+
+.table_row_empty {
+  height: 48px;
+}
+
+.table_head {
+  background-color: #241f1f;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+.table_col {
+  padding: 8px;
+  text-align: center;
+  border: 1px solid #ddd;
+  background-color: #ffffff;
+  color: black
+}
+
+.table_col:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.table_col:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+
+nav ul li a.active {
+  font-weight: bold;
+  background-color: #a9a9a9;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+
+nav ul li a.active {
+  font-weight: bold;
+  background-color: #a9a9a9;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+
+nav ul li a.active {
+  font-weight: bold;
+  background-color: #a9a9a9;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+#back-to-top {
+  display: none;
+  /* По умолчанию скрываю кнопку */
+  position: fixed;
+  bottom: 10px;
+  /* Снизу */
+  right: 10px;
+  /* Справа */
+  background-color: #696969;
+  border: none;
+  /* - рамка */
+  cursor: pointer;
+  /* Курсор в виде руки при наведении */
+  border-radius: 100%;
+  /* Делаею кнопку круглой */
+  padding: 10px 15px;
+  /* Отступы внутри кнопки */
+  font-size: 1.25rem;
+  /* Размер смайла */
+  transition: background-color 0.3s;
+  /* Плавное изменение цвета фона */
+}
+
+#back-to-top:hover {
+  background-color: #555;
+  /* Цвет фона кнопки при наведении */
+}
+
+/* Стили для ссылок */
+/*section ul li a {
+    text-decoration: underline;
+    color: #800080;
+    transition: color 0.3s ease;
+} */
+
+  /* Стиль - погода */
+#weather-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  /* Чтобы padding учитывался в общей ширине блока */
+  background-color: #f9f9f9;
+}
+
+/* Стили для текста с информацией о погоде */
+
+#weather {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/* Стили для холодной температуры */
+
+#weather .temp {
+  color: blue;
+}
+
+.button-container {
+  text-align: center;
+}
+
+/*  Стили для планировщика */
+
+#schedule-form {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#schedule-form button {
+  text-align: center;
+  background-color: #343434;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1rem;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+}
+
+#schedule-form button:hover {
+  background-color: #555;
+}
+
+#schedule-container table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+#schedule-container th,
+#schedule-container td {
+  border: 1px solid black;
+  padding: 5px;
+  text-align: center;
+}
+
+/* Важно, ячейки пустые. Чтоб не было повторных открываний мод окна */
+
+.time-slot {
+  cursor: pointer;
+}
+
+/* Стили для модального окна */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 1.75rem;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Стили для элементов списка достопримечательностей */
+
+.attraction-item {
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+.attraction-item img {
+  width: 50px;
+  height: auto;
+  margin-right: 10px;
+}
+
+/* Кнопка сохр */
+
+#save-schedule {
+  background-color: #006400;
+  color: white;
+  border-radius: 12px;
+}
+
+#save-schedule:hover {
+  background-color: #44944a;
+}
+
+#save-schedule:active {
+  background-color: #90ee90;
+}
+
+/* Кнопка del */
+
+#delete-schedule {
+  background-color: #8b0000;
+  color: white;
+  border-radius: 12px;
+}
+
+#delete-schedule:hover {
+  background-color: #b00000;
+}
+
+/* Кнопка поиск */
+
+#search-attraction {
+  background-color: #343434;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+}
+
+#search-attraction:hover {
+  width: 100px;
+}
+
+/*
+#search-attraction:before {
+    content: "\1F50D";
+    margin-right: 5px;
+}
+*/
+/* Корректировки: */
+/* Нужно было немного растянуть фон, чтобы расширить таблицу, тк в ячейки должны адекватно помещаться объемные словосочетания */
+
+.main-planer {
+  padding: 20px;
+  max-width: 1500px;
+  margin: 40px auto;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Чтобы подвал принимал норм положение */
+.spacer {
+  height: 147px;
+}
+
+.login {
+    max-width: 400px; /* Максимальная ширина формы */
+    margin: 15px auto; /* Автоматические отступы для центрирования формы + верхний отступ */
+    background-color: #f9f9f9; /* Цвет фона формы */
+    padding: 20px;
+    border-radius: 10px; /* Скругление углов формы */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для формы */
+}
+
+.login input, .login select {
+    padding: 10px;
+    margin-bottom: 1px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 96%;
+}
+
+.login select {
+    cursor: pointer; /* Курсор в виде указателя для выпадающего списка */
+    width: 101%;
+}
+
+.login button {
+    padding: 12px;
+    background-color: #247FFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.login button:hover {
+    background-color: #0D6CF2;
+}
+
+.centered-content {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.for-color {
+    color: #558cb7;
+    text-decoration: none;
+}
+
+.for-message {
+
+    font-size: 1rem;
+}
+
+nav {
+    position: relative;
+}
+
+
+.for-newcolor {
+    padding: 5px;
+    color: black;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.product {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: auto;
+}
+
+.product-info {
+    padding: 10px;
+}
+
+.product-info h3, .product-info p {
+    margin: 10px 0;
+}
+
+.add-to-cart {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-to-cart:hover {
+    background-color: #45a049;
+}
+
+
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.pagination a {
+  margin: 0 5px;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: #333;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 9px;
+  transition: background-color 0.3s ease;
+}
+
+.pagination a:hover {
+  background-color: #e2e6ea;
+}
+
+.pagination a.active {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.attraction-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.attraction {
+  width: 32%;
+  margin-bottom: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.attraction-image {
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+}
+
+.attraction-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.attraction-details {
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.attraction-name {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.attraction-info {
+  font-size: 14px;
+  color: #666;
+}
+
+
+
+.remove-item-btn {
+    background-color: #f58080;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 8px;
+    display: block;
+    margin: 0 auto;
+}
+
+.remove-item-btn:hover {
+    background-color: #9b3030;
+}
+
+.total-price {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+}

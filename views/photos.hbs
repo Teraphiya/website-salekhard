@@ -1,0 +1,67 @@
+<head>
+    {{> script-style}}
+    <link rel="stylesheet" href="css/photos.css">
+    <script src="js/comments.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+    {{> header}}
+    <main>
+        <section class="photo-gallery">
+            <div class="photo-container"> <img src="images/1shd.png" alt="Стелла 66 параллель"></div>
+            <div class="photo-container"> <img src=images/2shd.jpg alt="Мост Ямал"> </div>
+            <div class="photo-container"> <img src=images/3shd.jpg alt="Северное сияние"> </div>
+            <div class="photo-container"> <img src=images/4shd.jpg alt="Вид на город с высоты птичьего полета"> </div>
+            <div class="photo-container"> <img src=images/5shd.jpg alt="Памятник мамонту"> </div>
+            <div class="photo-container"> <img src=images/6shd.jpg alt="Собор преображения господня"> </div>
+            <div class="photo-container"> <img src=images/7shd.jpg alt="Концертный зал"> </div>
+            <div class="photo-container"> <img src=images/7shd.jpeg alt="Правительство ЯНАО"> </div>
+            <div class="photo-container"> <img src=images/9shd.jpg alt="Памятник Поезду"> </div>
+            <div class="photo-container"> <img src=images/10shd.jpg alt="Обдорский острог"> </div>
+            <div class="photo-container"> <img src=images/11shd.jpg alt="Еще Стелла"> </div>
+            <div class="photo-container"> <img src=images/12shd.jpg alt="Памятник северному оленю"> </div>
+        </section>
+    </main>
+    <!-- Предзагрузчик, по условию -->
+    <div class="preloader" id="preloader"></div>
+    <!-- Для открытия - модалка -->
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div id="caption"></div>
+        <div class="prev" id="prevButton">&#10094;</div>
+        <div class="next" id="nextButton">&#10095;</div>
+    </div>
+    <!-- Комменты -->
+    <div class="comments-section" id="modalComments">
+        <h3>Комментарии</h3>
+        <div class="comments-display" id="commentsDisplay">
+            {{#each comments}}
+            <div class="comment" data-comment-id="{{this.id}}">
+                <h4>{{this.name}} ({{this.email}})</h4>
+                <p class="comment-content">{{this.content}}</p>
+                <div class="comment-edit-form" style="display: none;">
+                    <input type="text" class="edit-comment-name" value="{{this.name}}">
+                    <input type="email" class="edit-comment-email" value="{{this.email}}">
+                    <textarea class="edit-comment-content">{{this.content}}</textarea>
+                    <button class="save-edit-comment">Сохранить изменения</button>
+                </div>
+                <button class="edit-comment">Редактировать комментарий</button>
+            </div>
+            {{/each}}
+        </div>
+    <div class="preloader" id="preloader"></div>
+    <form id="newCommentForm">
+        <input type="text" id="commentName" placeholder="Ваше имя">
+        <input type="email" id="commentEmail" placeholder="Ваш email">
+        <textarea id="commentBody" placeholder="Ваш комментарий" maxlength="300"></textarea>
+        <button type="submit">Отправить комментарий</button>
+    </form>
+</div>
+    {{> time }}
+    {{> footer }}
+    <button id="back-to-top" title="Вернуться наверх">&#9757;</button>
+</body>
+
+</html>

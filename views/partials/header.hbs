@@ -1,0 +1,20 @@
+<header class="header">
+    <h1>{{headerText}}</h1>
+    <nav>
+        <ul>
+            <li><a href="../">Главная</a></li>
+            <li><a href="photos">Фотографии</a></li>
+            <li><a href="map">Карта</a></li>
+            <li><a href="weather">Погода</a></li>
+            <li><a href="planer">Планировщик</a></li>
+            {{#if mail}}
+            <li><a href="shop">Магазин</a></li>
+            <li><a href="cart">Корзина  </a></li>
+            <li><a href="profileuser">{{mail}}</a></li>
+            <li><a href="javascript:void(0)" class="for-newcolor" onclick="logout()">Выйти</a></li>
+            {{else}}
+            <li><a href="login" class="for-newcolor">Войти</a></li>
+            {{/if}}
+        </ul>
+    </nav>
+</header>
